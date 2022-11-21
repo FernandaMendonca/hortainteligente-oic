@@ -1,0 +1,127 @@
+[
+    {
+        "id": "855df50edb21dd2a",
+        "type": "tab",
+        "label": "IoT Planta",
+        "disabled": false,
+        "info": "V1",
+        "env": []
+    },
+    {
+        "id": "5e0d9585280e2108",
+        "type": "mqtt in",
+        "z": "855df50edb21dd2a",
+        "name": "",
+        "topic": "iotplantafm/sub",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "ce08a2433f7a786a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "0b21e0a654df6f56"
+            ]
+        ]
+    },
+    {
+        "id": "f0dd5587cf9766c0",
+        "type": "telegram sender",
+        "z": "855df50edb21dd2a",
+        "name": "Alô Planta IoT",
+        "bot": "240af9717f29d69b",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0b21e0a654df6f56",
+        "type": "function",
+        "z": "855df50edb21dd2a",
+        "name": "Tratamento da Mensagem",
+        "func": "msg.payload = {\n    \"chatId\": 1122009042,\n    \"type\": \"message\",\n    \"content\": msg.payload\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 160,
+        "wires": [
+            [
+                "f0dd5587cf9766c0"
+            ]
+        ]
+    },
+    {
+        "id": "a634f877391730b3",
+        "type": "comment",
+        "z": "855df50edb21dd2a",
+        "name": "Doc",
+        "info": "Node 1 fica ouvindo um topico no MQTT.\nNode 2 faz o tratamento da mensagem que é recebida no topico.\nNode 3 conecta com o telegram e faz o envio da mensagem recebida no topico.",
+        "x": 110,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "ce08a2433f7a786a",
+        "type": "mqtt-broker",
+        "name": "Planta IoT",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "iotplantafm/sub",
+        "birthQos": "0",
+        "birthRetain": "true",
+        "birthPayload": "Teste Fernanda",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "240af9717f29d69b",
+        "type": "telegram bot",
+        "botname": "plantaiot_bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    }
+]
