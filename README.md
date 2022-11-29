@@ -5,6 +5,10 @@ Fernanda da Silva Mendonça - 41890280
 
 O objetivo desse projeto é desenvolver uma aplicação que a partir do valor identificado pelo sensor de umidade do solo, acionar um bot no Telegram avisando que já é hora de regar as plantas.
 
+Vídeo com a demonstração:
+
+https://www.youtube.com/watch?v=AGiAH85M3tM
+
 # Componentes
 
 |   |
